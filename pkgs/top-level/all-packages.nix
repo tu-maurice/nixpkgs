@@ -29188,6 +29188,8 @@ in
 
   prow = callPackage ../applications/networking/cluster/prow { };
 
+  tabfs = callPackage ../applications/misc/tabfs { };
+
   tagref = callPackage ../tools/misc/tagref { };
 
   tellico = libsForQt5.callPackage ../applications/misc/tellico { };
