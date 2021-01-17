@@ -2129,6 +2129,8 @@ in
 
   eggdrop = callPackage ../tools/networking/eggdrop { };
 
+  eka2l1 = callPackage ../misc/emulators/eka2l1 { };
+
   eksctl = callPackage ../tools/admin/eksctl { };
 
   electronplayer = callPackage ../applications/video/electronplayer/electronplayer.nix { };

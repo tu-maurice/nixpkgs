@@ -1,0 +1,31 @@
+
+
+diff --git a/src/emu/common/src/log.cpp b/src/emu/common/src/log.cpp
+index 171e8772..3d3c666c 100644
+--- a/src/emu/common/src/log.cpp
++++ b/src/emu/common/src/log.cpp
+@@ -105,24 +105,14 @@ namespace eka2l1 {
+         };
+ 
+         void setup_log(std::shared_ptr<base_logger> gui_logger) {
+-            const char *log_file_name = "EKA2L1.log";
+-
+             std::vector<spdlog::sink_ptr> sinks;
+ 
+             if (gui_logger) {
+                 sinks.push_back(std::make_shared<imgui_logger_sink>(gui_logger));
+             }
+ 
+-#if EKA2L1_PLATFORM(WIN32)
+-            DeleteFileA(log_file_name);
+-#else
+-            remove(log_file_name);
+-#endif
+-
+             sinks.push_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
+ 
+-            sinks.push_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>(log_file_name));
+-
+ #ifdef _MSC_VER
+             sinks.push_back(std::make_shared<spdlog::sinks::msvc_sink_st>());
+ #elif EKA2L1_PLATFORM(ANDROID)
