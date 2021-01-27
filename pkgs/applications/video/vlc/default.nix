@@ -92,6 +92,16 @@ stdenv.mkDerivation rec {
     sed -i 's|^#define CONFIGURE_LINE.*$|#define CONFIGURE_LINE "<removed>"|g' config.h
   '';
 
+  doInstallCheck = true;
+  installCheckPhase = optionalString (!onlyLibVLC) ''
+    if $out/bin/cvlc --version | grep -q "^VLC media player" ; then
+      echo '${pname} smoke check passed'
+    else
+      echo '${pname} smoke check failed'
+      return 1
+    fi
+  '';
+
   meta = with lib; {
     description = "Cross-platform media player and streaming server";
     homepage = "http://www.videolan.org/vlc/";
