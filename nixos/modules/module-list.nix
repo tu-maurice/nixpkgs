@@ -270,6 +270,7 @@
   ./services/cluster/kubernetes/proxy.nix
   ./services/cluster/kubernetes/scheduler.nix
   ./services/computing/boinc/client.nix
+  ./services/computing/fishnet/fishnet.nix
   ./services/computing/foldingathome/client.nix
   ./services/computing/slurm/slurm.nix
   ./services/computing/torque/mom.nix
