@@ -11,6 +11,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     hash = "sha256-ss8049D6n1V/gDzEMjywDnoke5s2we9j3mO8yta72UA=";
   };
 
+  patches = [
+    ./distrobox-enter-remove-nixos-paths.patch
+  ];
+
   dontConfigure = true;
   dontBuild = true;
 

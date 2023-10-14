@@ -1,0 +1,20 @@
+diff --git a/distrobox-enter b/distrobox-enter
+index eeb17ae..79638b9 100755
+--- a/distrobox-enter
++++ b/distrobox-enter
+@@ -344,7 +344,14 @@ generate_command() {
+ 	ORIG_IFS="${IFS}"
+ 	IFS=:
+ 	for standard_path in ${PATH}; do
+-		if [ -n "${container_paths##*:"${standard_path}"*}" ]; then
++		if [ -n "${container_paths##*:"${standard_path}"*}" ] &&
++               realpath "${standard_path}" 2>/dev/null | \
++                   grep -vq \
++                        -e '^/nix' \
++                        -e '^/run/wrappers' \
++                        -e '^/run/current-system' \
++                        -e '^/run/booted-system' \
++                        -e '\.nix-profile'; then
+ 			container_paths="${container_paths}:${standard_path}"
+ 		fi
+ 	done
