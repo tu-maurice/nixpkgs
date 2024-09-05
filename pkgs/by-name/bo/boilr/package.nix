@@ -42,7 +42,11 @@ rustPlatform.buildRustPackage.override { stdenv = clangStdenv; } rec {
     hash = "sha256-bwCTsoZ/9TeO3wyEcOqxKePnj9glsDXWUBCLd3nVT80=";
   };
 
-  cargoHash = "sha256-nAZU1xVpeRXubotla4I6InGMH4lisPMOnoqaK5mBPCM=";
+  cargoPatches = [
+    ./rust-1.80.patch
+  ];
+
+  cargoHash = "sha256-+CK/R6o9b18wNzPXbTrqU2g7KtV2HJ3SznfW6p4ffZk=";
 
   nativeBuildInputs = [ perl ];
 
